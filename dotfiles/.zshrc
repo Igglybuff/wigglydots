@@ -6,7 +6,9 @@
 # Version 3, © 2007-2015 Free Software Foundation, Inc. -- http://fsf.org/
 
 # set mescaline installation location
-mescaline_home="$HOME/.mescaline/"
+if [ -e "$HOME/.mescaline" ]; then
+  mescaline_home="$HOME/.mescaline/"
+fi
 
 function _mescaline () {
   export PROMPT="$(~/.mescaline/mescaline $?)"
