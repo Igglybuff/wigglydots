@@ -51,4 +51,4 @@ fi
 msg 'done.'
 
 # refresh zsh
-zsh -l
+#zsh -l
