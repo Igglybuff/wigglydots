@@ -14,6 +14,11 @@ if [ -e "$HOME/.mescaline" ]; then
   precmd () {
     _mescaline
   }
+  # enable ls colorization: 
+  if [ "$TERM" != "dumb" ]; then
+    eval "$(dircolors "$mescaline_home"/dircolors)"
+    alias ls="ls $LS_OPTIONS"
+  fi
 fi
 
 # force $TERM on rxvt
@@ -75,12 +80,6 @@ fi
 
 # grep with color
 alias grep='grep --color=auto'
-
-# enable ls colorization: 
-if [ "$TERM" != "dumb" ]; then
-  eval "$(dircolors "$mescaline_home"/dircolors)"
-  alias ls="ls $LS_OPTIONS"
-fi
 
 # do not autocorrect sudo commands (fixes "zsh: correct 'vim' to '.vim' [nyae]?")
 alias sudo='nocorrect sudo'
