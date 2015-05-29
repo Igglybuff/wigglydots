@@ -139,8 +139,6 @@ bindkey 'tab' $_
 # enable the advanced completion system
 autoload -U compinit && compinit
 
-
-
 export HISTSIZE=2000 
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
@@ -156,7 +154,6 @@ alias t='tmux detach; tmux attach || tmux'
 alias l='ls -al'
 alias apt-get='sudo apt-get'
 alias ..='cd ..'
-alias ~='cd ~'
 alias tmuxr='tmux source-file ~/.tmux.conf'
 alias bigupdate='apt-get update; apt-get upgrade; apt-get dist-upgrade'
 alias imgscrot='tmpfile="$(mktemp -u).png"; scrot "$tmpfile"; python "$HOME/.wigglytuff/scripts/imgur.py" "$tmpfile"'
