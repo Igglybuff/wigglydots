@@ -49,13 +49,13 @@ ln -s "$HOME/.wigglytuff/dotfiles/.tmux.conf" "$HOME/.tmux.conf"
 ln -s "$HOME/.wigglytuff/dotfiles/.zshrc" "$HOME/.zshrc"
 
 if [ -e "$HOME/.mescaline" ]; then
-  read -r -p "$wig remove @hostname from powerline prompt? (y/N)" response
+  read -r -p "$wig remove @hostname from powerline prompt? (y/N) " response
   case $response in
     [yY][eE][sS]|[yY])
         sed -ie "s/ + \"@\" + hostname//g" "$HOME/.mescaline/mescaline"
         ;;
   esac
-  read -r -p "$wig set basic powerline shell prompt colours? (y/N)" response
+  read -r -p "$wig set basic powerline shell prompt colours? (y/N) " response
   case $response in
     [yY][eE][sS]|[yY])
 		read -r -p "$wig foreground: " foreground
