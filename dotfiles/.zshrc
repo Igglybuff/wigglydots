@@ -8,20 +8,20 @@
 # set mescaline installation location
 if [ -e "$HOME/.mescaline" ]; then
   mescaline_home="$HOME/.mescaline/"
+  function _mescaline () {
+    export PROMPT="$(~/.mescaline/mescaline $?)"
+  }
+  precmd () {
+    _mescaline
+  }
 fi
-
-function _mescaline () {
-  export PROMPT="$(~/.mescaline/mescaline $?)"
-}
-precmd () {
-	_mescaline
-}
 
 # force $TERM on rxvt
 if [[ "$COLORTERM" == "rxvt-xpm" ]]; then
     export TERM="rxvt-unicode-256color"
 fi
 
+# force $TERM on xterm
 if [[ "$TERM" == "xterm" ]]; then
     export TERM="xterm-256color"
 fi
