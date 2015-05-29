@@ -163,4 +163,5 @@ alias imgscrots='tmpfile="$(mktemp -u).png"; scrot "$tmpfile" -s; python "$HOME/
 alias wigglyscrot='$HOME/.wigglytuff/scripts/wigglyscrot.sh'
 alias service='sudo service'
 alias roflcopter='$HOME/.wigglytuff/scripts/copter'
+alias pulsemixer='pavucontrol'
 
