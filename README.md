@@ -1,5 +1,5 @@
 # wigglydots
-My dotfiles and scripts and stuff.
+My autoinstaller for powerline and dotfiles and scripts and stuff.
 
 **Usage**
 
