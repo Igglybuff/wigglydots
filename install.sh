@@ -19,7 +19,9 @@ msg () {
 
 # run mescaline installer
 msg 'running mescaline installer...'
-rm -rf "$HOME/.mescaline"
+if [ -e "$HOME/.mescaline" ]; then
+  rm -rf "$HOME/.mescaline"
+fi
 mv "$HOME/.zshrc" "$HOME/.zshrc.pre-mescaline"
 sh ./mescaline/install.sh || msg 'mescaline install failed. continuing anyway.'
 
