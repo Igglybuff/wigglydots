@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # wigglytuff's configurator <wiggly@wigglytuff.org>
 #
@@ -16,6 +16,8 @@ msg () {
   printf "[wigglytuff] "
   printf "$@ \n"
 }
+
+wig="[wigglytuff]"
 
 # run mescaline installer
 msg 'running mescaline installer...'
@@ -46,11 +48,28 @@ ln -s "$HOME/.wigglytuff/dotfiles/.vimrc" "$HOME/.vimrc"
 ln -s "$HOME/.wigglytuff/dotfiles/.tmux.conf" "$HOME/.tmux.conf"
 ln -s "$HOME/.wigglytuff/dotfiles/.zshrc" "$HOME/.zshrc"
 
+if [ -e "$HOME/.mescaline" ]; then
+  read -r -p "$wig remove @hostname from powerline prompt? (y/N)" response
+  case $response in
+    [yY][eE][sS]|[yY])
+        sed -ie "s/ + \"@\" + hostname//g" "$HOME/.mescaline/mescaline"
+        ;;
+  esac
+  read -r -p "$wig set basic powerline shell prompt colours? (y/N)" response
+  case $response in
+    [yY][eE][sS]|[yY])
+		read -r -p "$wig foreground: " foreground
+		read -r -p "$wig background: " background
+		msg 'setting colours... (if you fucked this up, just run this script again)' 
+		sed -ie "s/27/$foreground/g" "$HOME/.mescaline/mescaline"
+		sed -ie "s/75/$background/g" "$HOME/.mescaline/mescaline"
+        ;;
+  esac
+fi
+
 if [ -e "./dotfiles/apikeys" ]; then
+  msg 'applying api keys...'
   cat "./dotfiles/apikeys" >> "$HOME/.zshrc"
 fi
 
 msg 'done.'
-
-# refresh zsh
-#zsh -l
