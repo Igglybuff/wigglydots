@@ -1,6 +1,8 @@
 # wigglydots
 My autoinstaller for powerline and dotfiles and scripts and stuff.
 
+![alt tag](http://wigglytuff.org/images/wigglydots.png)
+
 **Dependencies**
 
   ```console
