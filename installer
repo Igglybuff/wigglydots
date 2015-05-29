@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# wigglytuff's configurator <wiggly@wigglytuff.org>
+# wigglydots - wigglytuff's configurator <wiggly@wigglytuff.org>
 #
 # mescaline is created by netzverweigerer - http://github.com/netzverweigerer/
 #
@@ -48,6 +48,7 @@ ln -s "$HOME/.wigglytuff/dotfiles/.vimrc" "$HOME/.vimrc"
 ln -s "$HOME/.wigglytuff/dotfiles/.tmux.conf" "$HOME/.tmux.conf"
 ln -s "$HOME/.wigglytuff/dotfiles/.zshrc" "$HOME/.zshrc"
 
+# setup options
 if [ -e "$HOME/.mescaline" ]; then
   read -r -p "$wig remove @hostname from powerline prompt? (y/N) " response
   case $response in
@@ -68,6 +69,7 @@ if [ -e "$HOME/.mescaline" ]; then
   esac
 fi
 
+# appends apikeys from dotfiles/apikeys to ~/.zshrc
 if [ -e "./dotfiles/apikeys" ]; then
   msg 'appending api keys...'
   cat "./dotfiles/apikeys" >> "$HOME/.zshrc"
