@@ -1,6 +1,12 @@
 # wigglydots
 My autoinstaller for powerline and dotfiles and scripts and stuff.
 
+**Dependencies**
+
+  ```console
+  $ sudo apt-get install keychain zsh python3 git vim tmux
+  ```
+
 **Usage**
 
   ```console
@@ -9,7 +15,10 @@ My autoinstaller for powerline and dotfiles and scripts and stuff.
   $ ./installer.sh
 
   ```
-wigglydots will back up any pre-existing .rc or .conf files automagically.
+wigglydots will back up any pre-existing .rc or .conf files automagically. Remember to change your shell to zsh with:
+  ```console
+  $ sudo chsh -s /usr/bin/zsh
+  ```
 
 **Tidbits**
 
