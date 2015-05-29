@@ -69,7 +69,7 @@ if [ -e "$HOME/.mescaline" ]; then
 fi
 
 if [ -e "./dotfiles/apikeys" ]; then
-  msg 'applying api keys...'
+  msg 'appending api keys...'
   cat "./dotfiles/apikeys" >> "$HOME/.zshrc"
 fi
 
