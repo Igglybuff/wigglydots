@@ -77,12 +77,8 @@ fi
 alias grep='grep --color=auto'
 
 # enable ls colourisation
-if [ -z "$mescaline_home" ]; then
-  if [ "$TERM" != "dumb" ]; then
-    eval "$(dircolors "$mescaline_home"/dircolors)"
-    alias ls="ls $LS_OPTIONS"
-  fi
-elif [ "$TERM" != "dumb" ]; then
+if [ "$TERM" != "dumb" ]; then
+  eval "$(dircolors "$mescaline_home"/dircolors)"
   alias ls="ls $LS_OPTIONS"
 fi
 
