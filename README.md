@@ -16,8 +16,7 @@ You'll also need to use a font compatible with powerline's special characters. [
   ```console
   $ git clone https://github.com/Igglybuff/wigglydots.git
   $ cd wigglydots
-  $ ./installer.sh
-
+  $ ./installer
   ```
 wigglydots will back up any pre-existing .rc or .conf files automagically. Remember to change your shell to zsh with:
   ```console
