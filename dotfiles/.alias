@@ -1,0 +1,14 @@
+# aliases
+alias t='tmux detach; tmux attach || tmux'
+alias l='ls -al'
+alias apt-get='sudo apt-get'
+alias ..='cd ..'
+alias tmuxr='tmux source-file ~/.tmux.conf'
+alias bigupdate='apt-get update; apt-get upgrade; apt-get dist-upgrade'
+alias imgscrot='tmpfile="$(mktemp -u).png"; scrot "$tmpfile"; python "$HOME/.wigglytuff/scripts/imgur.py" "$tmpfile"'
+alias imgscrots='tmpfile="$(mktemp -u).png"; scrot "$tmpfile" -s; python "$HOME/.wigglytuff/scripts/imgur.py" "$tmpfile"'
+alias wigglyscrot='$HOME/.wigglytuff/scripts/wigglyscrot.sh'
+alias service='sudo service'
+alias roflcopter='$HOME/.wigglytuff/scripts/copter'
+alias pulsemixer='pavucontrol'
+

@@ -21,6 +21,11 @@ if [[ "$COLORTERM" == "rxvt-xpm" ]]; then
     export TERM="rxvt-unicode-256color"
 fi
 
+# force $TERM on xfce4-terminal
+if [[ "$COLORTERM" == "xfce4-terminal" ]]; then
+  export TERM="xterm-256color"
+fi
+
 # force $TERM on xterm
 if [[ "$TERM" == "xterm" ]]; then
     export TERM="xterm-256color"
@@ -63,27 +68,31 @@ LS_OPTIONS="--color=auto --group-directories-first -F"
 
 # keychain stuff
 if hash keychain; then
-ssh_cmd="$(which ssh)"
-function ssh () {
-echo "$@" >> $HOME/.keychain-args
-echo "$(date)" > $HOME/.keychain-output
-keychain id_rsa >> $HOME/.keychain-output 2>&1
-[ -z "$HOSTNAME" ] && HOSTNAME=`uname -n`
-[ -f $HOME/.keychain/$HOSTNAME-sh ] && \
-. $HOME/.keychain/$HOSTNAME-sh
-[ -f $HOME/.keychain/$HOSTNAME-sh-gpg ] && \
-. $HOME/.keychain/$HOSTNAME-sh-gpg
-"$ssh_cmd" "$@"
-}
+    _s="$(which ssh)"
+    ssh () {
+        keychain >/dev/null 2>&1
+        h="$(uname -n)-sh"
+        [ -f $h ] && . $h
+		$_s "$@"
+	} 
 fi
 
 # grep with color
 alias grep='grep --color=auto'
 
 # enable ls colourisation
-if [ "$TERM" != "dumb" ]; then
-  eval "$(dircolors "$mescaline_home"/dircolors)"
-  alias ls="ls $LS_OPTIONS"
+# enable ls colorization:                             
+if [[ "$TERM" != "dumb" ]]; then                      
+  # this sets $LS_COLORS as well:                     
+  eval "$("$dircolors_command" "$mescaline_home"/dircolors
+  export ls_options                 
+  export LS_COLORS                  
+  alias ls="$ls_command $ls_options"
+  # colored grep / less             
+  alias grep="grep --color='auto'"  
+  alias less='less -R'              
+  alias diff='colordiff'            
+
 fi
 
 # do not autocorrect sudo commands (fixes "zsh: correct 'vim' to '.vim' [nyae]?")
@@ -105,7 +114,7 @@ setopt complete_in_word
 setopt always_to_end
 
 # word completion/deletion non-boundary characters
-WORDCHARS=''
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>' 
 
 zmodload -i zsh/complist
 zstyle ':completion:*' list-colors ''
@@ -120,6 +129,8 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm 
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 cdpath=(.)
 
+# allow extended globbing
+setopt extendedglob
 # Use caching so that commands like apt and dpkg complete are useable
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path $mescaline_home/cache/
@@ -127,14 +138,20 @@ zstyle ':completion::complete:*' cache-path $mescaline_home/cache/
 # unless we really want to
 zstyle '*' single-ignored show
 
+# enable completion system (-i: disabl
+# files/directories)
+autoload -U compinit && compinit -i
+
+# use expand-or-complete-with-dots
+zle -N expand-or-complete-with-dots
 expand-or-complete-with-dots() {
 #    echo -n "\e[36mч\e[0m"
     echo -n "\e[36mᕁ\e[0m"
     zle expand-or-complete
     zle redisplay
   }
-  zle -N expand-or-complete-with-dots
-  bindkey "^I" expand-or-complete-with-dots
+bindkey "^I" expand-or-complete-with-dots
+bindkey 'tab' expand-or-complete-with-dots
 
 # set backspace boundaries
 autoload -Uz select-word-style
@@ -151,6 +168,8 @@ export SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
 setopt autocd
 
+zle -N zle-keymap-select 
+bindkey -e
 # When set, you're able to use extended globbing queries such as cp ^*.(tar|bz2|gz) .
 setopt extendedglob
 
@@ -159,18 +178,4 @@ acp ()
 {
 	git add -A && git commit -m "$1" && git push
 }
-
-# aliases
-alias t='tmux detach; tmux attach || tmux'
-alias l='ls -al'
-alias apt-get='sudo apt-get'
-alias ..='cd ..'
-alias tmuxr='tmux source-file ~/.tmux.conf'
-alias bigupdate='apt-get update; apt-get upgrade; apt-get dist-upgrade'
-alias imgscrot='tmpfile="$(mktemp -u).png"; scrot "$tmpfile"; python "$HOME/.wigglytuff/scripts/imgur.py" "$tmpfile"'
-alias imgscrots='tmpfile="$(mktemp -u).png"; scrot "$tmpfile" -s; python "$HOME/.wigglytuff/scripts/imgur.py" "$tmpfile"'
-alias wigglyscrot='$HOME/.wigglytuff/scripts/wigglyscrot.sh'
-alias service='sudo service'
-alias roflcopter='$HOME/.wigglytuff/scripts/copter'
-alias pulsemixer='pavucontrol'
 
