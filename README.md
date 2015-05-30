@@ -6,7 +6,8 @@ My autoinstaller for powerline and dotfiles and scripts and stuff.
 **Dependencies**
 
   ```console
-  $ sudo apt-get install keychain zsh python3 git vim tmux
+  $ sudo apt-get install keychain zsh python3 git vim tmux python-pip
+  $ sudo pip install powerline-status
   ```
 You'll also need to use a font compatible with powerline's special characters. Terminus Medium 9px (patched) is the font used in the screenshot.
 
