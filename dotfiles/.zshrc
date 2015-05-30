@@ -26,6 +26,10 @@ if [[ "$TERM" == "xterm" ]]; then
     export TERM="xterm-256color"
 fi
 
+# for $TERM on screen
+if [[ "$TERM" == "screen" ]]; then
+    export TERM="screen-256color"
+fi
 # set $PATH
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:$HOME/bin
 
