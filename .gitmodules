@@ -1,0 +1,3 @@
+[submodule "mescaline"]
+	path = mescaline
+	url = git@github.com:Igglybuff/mescaline.git
