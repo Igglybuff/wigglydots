@@ -40,12 +40,16 @@ fi
 if [ -e "$HOME/.tmux.conf" ]; then
   mv "$HOME/.tmux.conf" "$HOME/.tmux.conf-prewiggly"
 fi
-if [ -e "$HOME/.zshrc" ]; then
-  mv "$HOME/.zshrc" "$HOME/.zshrc-prewiggly"
-fi
+#if [ -e "$HOME/.zshrc" ]; then
+#  mv "$HOME/.zshrc" "$HOME/.zshrc-prewiggly"
+#fi
 ln -s "$HOME/.wigglytuff/dotfiles/.vimrc" "$HOME/.vimrc"
 ln -s "$HOME/.wigglytuff/dotfiles/.tmux.conf" "$HOME/.tmux.conf"
-ln -s "$HOME/.wigglytuff/dotfiles/.zshrc" "$HOME/.zshrc"
+#ln -s "$HOME/.wigglytuff/dotfiles/.zshrc" "$HOME/.zshrc"
+
+# append wiggly's aliases to .zshrc
+msg 'appending aliases...'
+cat "$HOME/.wigglytuff/dotfiles/.alias" >> "$HOME/.zshrc"
 
 # setup options
 if [ -e "$HOME/.mescaline" ]; then
@@ -62,8 +66,8 @@ if [ -e "$HOME/.mescaline" ]; then
 		msg "for colour codes, see http://bit.ly/1EEOlar"
 		read -r -p "$wig foreground: " foreground
 		read -r -p "$wig background: " background
-		sed -ie "s/27/$foreground/g" "$HOME/.mescaline/mescaline"
-		sed -ie "s/75/$background/g" "$HOME/.mescaline/mescaline"
+		sed -ie "s/user_fg = 15/user_fg = $foreground/g" "$HOME/.mescaline/mescaline"
+		sed -ie "s/124/$background/g" "$HOME/.mescaline/mescaline"
         ;;
   esac
 fi
