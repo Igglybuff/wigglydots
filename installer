@@ -4,7 +4,6 @@
 #
 # mescaline is created by netzverweigerer - http://github.com/netzverweigerer/
 #
-# this script assumes you've already installed zsh and ran chsh -s /usr/bin/zsh
 
 # parameter expansion to extract the scripts home directory
 script="${0%/*}"
