@@ -1,7 +1,7 @@
 # wigglydots
 My autoinstaller for powerline and dotfiles and scripts and stuff. Powered by [mescaline](https://github.com/netzverweigerer/mescaline).
 
-![alt tag](http://wigglytuff.org/images/wigglydots.png)
+<!--![alt tag](http://wigglytuff.org/images/wigglydots.png)-->
 
 **Dependencies**
 
