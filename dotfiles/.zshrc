@@ -154,8 +154,13 @@ setopt autocd
 # When set, you're able to use extended globbing queries such as cp ^*.(tar|bz2|gz) .
 setopt extendedglob
 
-# aliases
+# git function
+acp ()
+{
+	git add -A && git commit -m "$1" && git push
+}
 
+# aliases
 alias t='tmux detach; tmux attach || tmux'
 alias l='ls -al'
 alias apt-get='sudo apt-get'
