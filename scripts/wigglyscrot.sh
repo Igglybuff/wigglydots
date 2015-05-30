@@ -3,7 +3,7 @@
 if [ -z "$1" ]; then
   scrot scrot.png
 else
-  scrot -s scrot.png
+  scrot "$1" scrot.png
 fi
 
 rsync scrot.png fubinaca:/home/wigglytuff/wigglytuff.org/images -q
