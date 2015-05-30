@@ -14,7 +14,7 @@ You'll also need to use a font compatible with powerline's special characters. [
 **Usage**
 
   ```console
-  $ git clone https://github.com/Igglybuff/wigglydots.git
+  $ git clone --recursive https://github.com/Igglybuff/wigglydots.git
   $ cd wigglydots
   $ ./installer
   ```
