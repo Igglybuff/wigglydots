@@ -77,5 +77,4 @@ if [ -e "./dotfiles/apikeys" ]; then
   msg 'appending api keys...'
   cat "./dotfiles/apikeys" >> "$HOME/.zshrc"
 fi
-cd "$HOME"
 msg 'done.'
