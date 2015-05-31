@@ -18,6 +18,12 @@ msg () {
 
 wig="[wigglytuff]"
 
+# check to see if user read the README.md
+# and autofix if he/she didn't
+if [ ! -d "mescaline" ]; then
+  git clone https://github.com/Igglybuff/mescaline.git | msg 'could not clone mescaline git repo. exiting...'; exit 1
+fi
+
 # run mescaline installer
 msg 'running mescaline installer...'
 if [ -e "$HOME/.mescaline" ]; then
