@@ -24,7 +24,7 @@ msg 'wigglydots installer v0.2 - https://github.com/Igglybuff/wigglydots'
 # and autofix if he/she didn't
 if [ ! -e "mescaline/zshrc" ]; then
   msg 'someone forgot to clone recursively...'
-  git clone https://github.com/Igglybuff/mescaline.git || msg 'could not clone mescaline git repo. exiting...' && exit 1
+  git clone https://github.com/Igglybuff/mescaline.git || { msg 'could not clone mescaline git repo. exiting...'; exit 1; }
 fi
 
 # run mescaline installer
