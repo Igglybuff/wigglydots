@@ -54,7 +54,6 @@ fi
 #fi
 ln -s "$HOME/.wigglytuff/dotfiles/.vimrc" "$HOME/.vimrc"
 ln -s "$HOME/.wigglytuff/dotfiles/.tmux.conf" "$HOME/.tmux.conf"
-#ln -s "$HOME/.wigglytuff/dotfiles/.zshrc" "$HOME/.zshrc"
 
 # append wiggly's aliases to .zshrc
 msg 'appending aliases...'
