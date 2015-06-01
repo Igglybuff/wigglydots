@@ -49,11 +49,13 @@ fi
 if [ -e "$HOME/.tmux.conf" ]; then
   mv "$HOME/.tmux.conf" "$HOME/.tmux.conf-prewiggly"
 fi
-#if [ -e "$HOME/.zshrc" ]; then
-#  mv "$HOME/.zshrc" "$HOME/.zshrc-prewiggly"
-#fi
+if [ -e "$HOME/.vim"]; then
+  rsync -a "$HOME/.vim" "$HOME/.vim-prewiggly" # sometimes i like to surprise people with random rsync's
+fi
+
 ln -s "$HOME/.wigglytuff/dotfiles/.vimrc" "$HOME/.vimrc"
 ln -s "$HOME/.wigglytuff/dotfiles/.tmux.conf" "$HOME/.tmux.conf"
+ln -s "$HOME/.wigglytuff/dotfiles/.vim" "$HOME"
 
 # append wiggly's aliases to .zshrc
 msg 'appending aliases...'
