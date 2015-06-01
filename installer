@@ -50,7 +50,7 @@ if [ -e "$HOME/.tmux.conf" ]; then
   mv "$HOME/.tmux.conf" "$HOME/.tmux.conf-prewiggly"
 fi
 if [ -e "$HOME/.vim"]; then
-  rsync -a "$HOME/.vim" "$HOME/.vim-prewiggly" # sometimes i like to surprise people with random rsync's
+  mv "$HOME/.vim" "$HOME/.vim-prewiggly"
 fi
 
 ln -s "$HOME/.wigglytuff/dotfiles/.vimrc" "$HOME/.vimrc"
