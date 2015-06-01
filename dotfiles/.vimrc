@@ -3,7 +3,8 @@ set bg=dark
 colorscheme moxokai
 set hlsearch
 set modeline
-set rtp+=$HOME/git/powerline/powerline/bindings/vim
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim
+"set rtp+=$HOME/git/powerline/powerline/bindings/vim
 set laststatus=2
 set noshowmode
 " eventually needed for TERM=xterm-256color compatibility, comment this out
