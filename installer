@@ -49,8 +49,8 @@ fi
 if [ -e "$HOME/.tmux.conf" ]; then
   mv "$HOME/.tmux.conf" "$HOME/.tmux.conf-prewiggly"
 fi
-if [ -e "$HOME/.vim"]; then
-  mv "$HOME/.vim" "$HOME/.vim-prewiggly"
+if [ -e "$HOME/.vim" ]; then
+  mv "$HOME/.vim/" "$HOME/.vim-prewiggly/"
 fi
 
 ln -s "$HOME/.wigglytuff/dotfiles/.vimrc" "$HOME/.vimrc"
