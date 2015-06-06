@@ -11,4 +11,4 @@ alias wigglyscrot='$HOME/.wigglytuff/scripts/wigglyscrot.sh'
 alias service='sudo service'
 alias roflcopter='$HOME/.wigglytuff/scripts/copter'
 alias pulsemixer='pavucontrol'
-
+alias upload='$HOME/.wigglytuff/scripts/upload'
