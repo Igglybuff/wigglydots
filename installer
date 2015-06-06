@@ -87,6 +87,7 @@ if [ -e "$HOME/.mescaline" ]; then
 		read -r -p "$wig background: " background
 		sed -ie "s/user_fg = 15/user_fg = $foreground/g" "$HOME/.mescaline/mescaline"
 		sed -ie "s/124/$background/g" "$HOME/.mescaline/mescaline"
+		rm "$HOME/.mescaline/mescalinee"
         ;;
   esac
 fi
