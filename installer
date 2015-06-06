@@ -99,6 +99,5 @@ if [ -e "./dotfiles/apikeys" ]; then
 fi
 
 msg 'done.'
-zsh -l
-cd "$home"
+zsh -l && cd "$home"
 
