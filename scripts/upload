@@ -3,7 +3,7 @@
 # $1 is a URL. then it uploads that image to wigglytuff.org and spits the url
 #
 
-wget "$1" -O tmp.png -q
+wget "$1" -O tmp.png -q || cp "$1" tmp.png
 rsync tmp.png fubinaca:"$HOME/wigglytuff.org/images/tmp.png" -aq --progress
 echo "$1 has been uploaded to https://wigglytuff.org/images/tmp.png"
 rm tmp.png
