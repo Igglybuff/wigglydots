@@ -12,6 +12,4 @@ alias service='sudo service'
 alias roflcopter='$HOME/.wigglytuff/scripts/copter'
 alias pulsemixer='pavucontrol'
 alias upload='$HOME/.wigglytuff/scripts/upload'
-# the ultimate SSH chain (for wigglytuff)
-alias wiggly='ssh -t fubinaca ssh -p 1235 -t pi@localhost ssh laptop'
 
