@@ -12,5 +12,9 @@ alias service='sudo service'
 alias roflcopter='$HOME/.wigglytuff/scripts/copter'
 alias pulsemixer='pavucontrol'
 alias upload='$HOME/.wigglytuff/scripts/upload'
+<<<<<<< HEAD
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 alias FUCK='fuck'
+=======
+
+>>>>>>> d46f82dd7f022a5df152db89a7cd26897640b137
