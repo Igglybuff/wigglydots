@@ -7,5 +7,5 @@ else
 fi
 
 rsync scrot.png fubinaca:/home/wigglytuff/wigglytuff.org/images -q
-echo "http://wigglytuff.org/images/scrot.png"
+echo "https://wigglytuff.org/images/scrot.png"
 rm scrot.png
