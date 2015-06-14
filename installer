@@ -92,6 +92,10 @@ if [ -e "$HOME/.mescaline" ]; then
   esac
 fi
 
+# install plugins
+e 'installing plugins...'
+cp -r "$home/plugins/zsh-syntax-highlighting" "$HOME/.zsh/plugins/zsh-syntax-highlighting"
+
 # appends apikeys from dotfiles/apikeys to ~/.zshrc
 if [ -e "./dotfiles/apikeys" ]; then
   msg 'appending api keys...'
