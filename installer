@@ -93,9 +93,9 @@ if [ -e "$HOME/.mescaline" ]; then
 fi
 
 # install plugins
-e 'installing plugins...'
-mkdir "$HOME/.zsh/plugins/zsh-syntax-highlighting"
-cp -r "$home/plugins/zsh-syntax-highlighting" "$HOME/.zsh/plugins/zsh-syntax-highlighting"
+msg 'installing plugins...'
+#mkdir "$HOME/.zsh/plugins/zsh-syntax-highlighting"
+cp -r "$home/plugins/zsh-syntax-highlighting" "$HOME/.zsh/plugins/"
 
 # appends apikeys from dotfiles/apikeys to ~/.zshrc
 if [ -e "./dotfiles/apikeys" ]; then
