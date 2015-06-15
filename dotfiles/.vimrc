@@ -25,4 +25,5 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 set tabstop=4
 set shortmess+=I
 set showtabline=2
+highlight Normal ctermbg=234
 
