@@ -94,8 +94,8 @@ fi
 
 # install plugins
 msg 'installing plugins...'
-mkdir -p "$HOME/.zsh/plugins/zsh-syntax-highlighting"
-cp -r "$home/plugins/zsh-syntax-highlighting" "$HOME/.zsh/plugins"
+mkdir -p "$HOME/.zsh/plugins/zsh-syntax-colours"
+cp -r "$home/plugins/zsh-syntax-colours" "$HOME/.zsh/plugins"
 
 # appends apikeys from dotfiles/apikeys to ~/.zshrc
 if [ -e "./dotfiles/apikeys" ]; then
