@@ -10,7 +10,7 @@ alias imgscrots='tmpfile="$(mktemp -u).png"; scrot "$tmpfile" -s; python "$HOME/
 alias wigglyscrot='$HOME/.wigglytuff/scripts/wigglyscrot.sh'
 alias service='sudo service'
 alias roflcopter='$HOME/.wigglytuff/scripts/copter'
-alias pulsemixer='pavucontrol'
 alias upload='$HOME/.wigglytuff/scripts/upload'
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 alias FUCK='fuck'
+alias alsamixer='alsamixer -g'
