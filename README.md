@@ -9,7 +9,7 @@ My autoinstaller for powerline and dotfiles and scripts and stuff. Powered by [m
   $ sudo apt-get install keychain zsh python3 git vim tmux python-pip scrot colordiff vim-nox
   $ sudo pip install powerline-status
   ```
-You'll also need to use a font compatible with powerline's special characters. [Terminus Medium 9px](https://github.com/Igglybuff/config-bits/blob/master/fonts/TerminusTTF-4.39.ttf?raw=true) (patched) is the font used in the screenshot.
+You'll also need to use a font compatible with powerline's special characters. [Terminus Medium 12px](https://github.com/Igglybuff/config-bits/blob/master/fonts/TerminusTTF-4.39.ttf?raw=true) (patched) is the font used in the screenshot.
 
 **Usage**
 
