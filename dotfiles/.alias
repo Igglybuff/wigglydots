@@ -29,3 +29,4 @@ alias dynpm='sudo bash -c "echo dynpm > /sys/class/drm/card0/device/power_method
 alias gpu="sudo cat /sys/kernel/debug/dri/0/radeon_pm_info /sys/class/drm/card0/device/power_method"
 alias tearfree="sudo aticonfig --set-pcs-u32=DDX,EnableTearFreeDesktop,1"
 
+alias -g ...='../..'
