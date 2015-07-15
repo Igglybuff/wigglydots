@@ -1,11 +1,13 @@
 #!/bin/sh
 
 if [ -z "$1" ]; then
-  scrot scrot.png
+  SCRTPTH=$(mktemp -p /run/user/$UID/ --suffix=.png)
+  scrot $SCRTPTH -q 100%
 else
-  scrot "$1" scrot.png
+  SCRTPTH=$(mktemp -p /run/user/$UID/ --suffix=.png)
+  scrot $SCRTPTH "$1" -q 100%
 fi
 
-rsync scrot.png fubinaca:/home/wigglytuff/wigglytuff.org/images -q
-echo "https://wigglytuff.org/images/scrot.png" | xclip -selection c
-rm scrot.png
+rsync $SCRTPTH fubinaca:/home/wigglytuff/wigglytuff.org/images -q
+echo "https://wigglytuff.org/images/$SCRTPATH" | xclip -selection c
+rm $SCRTPATH
