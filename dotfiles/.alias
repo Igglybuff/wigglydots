@@ -15,7 +15,7 @@ alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 alias FUCK='fuck'
 alias aria2c='aria2c -c -x5 -s10 -m0'
 alias alsamixer='alsamixer -g'
-alias whatismyip='curl http://dynamicdns.park-your-domain.com/getip'
+alias whatismyip='/home/wigglytuff/.wigglytuff/wtfismyip.py'
 alias lock="/home/wigglytuff/code/i3lock"
 alias zshrcbak="cp /home/wigglytuff/.zshrc /home/wigglytuff/.zshrc.bak"
 
