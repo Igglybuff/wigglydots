@@ -20,14 +20,6 @@ wig="[wigglytuff]"
 
 msg 'wigglydots installer v0.2 - https://github.com/Igglybuff/wigglydots'
 
-# check for dependencies
-msg 'searching for unmet dependencies...'
-if [ ! -d "/usr/local/lib/python2.7/dist-packages/powerline" ]; then
-  msg 'missing powerline package. run `sudo pip install powerline-status` to fix.'
-  msg 'exiting gracefully...'
-  exit 0
-fi
-
 # run mescaline installer
 msg 'running mescaline installer...'
 if [ -e "$HOME/.mescaline" ]; then
