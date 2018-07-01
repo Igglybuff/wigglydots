@@ -64,26 +64,26 @@ msg 'appending aliases...'
 cat "$HOME/.wigglytuff/dotfiles/.alias" >> "$HOME/.zshrc"
 
 # setup options
-if [ -e "$HOME/.mescaline" ]; then
-  read -r -p "$wig remove @hostname from powerline prompt? (y/N) " response
-  case $response in
-    [yY][eE][sS]|[yY])
-        sed -ie "s/ + \"@\" + hostname//g" "$HOME/.mescaline/mescaline"
-        ;;
-  esac
-  read -r -p "$wig set basic powerline shell prompt colours? (y/N) " response
-  case $response in
-    [yY][eE][sS]|[yY])
-		msg "don't worry if you fuck this up, just run the installer again."
-		msg "for colour codes, see http://bit.ly/1EEOlar"
-		read -r -p "$wig foreground: " foreground
-		read -r -p "$wig background: " background
-		sed -ie "s/user_fg = 15/user_fg = $foreground/g" "$HOME/.mescaline/mescaline"
-		sed -ie "s/124/$background/g" "$HOME/.mescaline/mescaline"
-		rm "$HOME/.mescaline/mescalinee"
-        ;;
-  esac
-fi
+#if [ -e "$HOME/.mescaline" ]; then
+#  read -r -p "$wig remove @hostname from powerline prompt? (y/N) " response
+#  case $response in
+#    [yY][eE][sS]|[yY])
+#        sed -ie "s/ + \"@\" + hostname//g" "$HOME/.mescaline/mescaline"
+#        ;;
+#  esac
+#  read -r -p "$wig set basic powerline shell prompt colours? (y/N) " response
+#  case $response in
+#    [yY][eE][sS]|[yY])
+#		msg "don't worry if you fuck this up, just run the installer again."
+#		msg "for colour codes, see http://bit.ly/1EEOlar"
+#		read -r -p "$wig foreground: " foreground
+#		read -r -p "$wig background: " background
+#		sed -ie "s/user_fg = 15/user_fg = $foreground/g" "$HOME/.mescaline/mescaline"
+#		sed -ie "s/124/$background/g" "$HOME/.mescaline/mescaline"
+#		rm "$HOME/.mescaline/mescalinee"
+#        ;;
+#  esac
+#fi
 
 # install plugins
 msg 'installing plugins...'
