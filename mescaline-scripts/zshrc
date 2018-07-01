@@ -1,0 +1,181 @@
+# mescaline for zsh - based on powerline / ezzsh, but this version is
+# entirely re-written from scratch.
+# Written by Arminius <armin@arminius.org>
+#
+# Released under the terms of the GNU General Public License,
+# Version 3, © 2007-2015 Free Software Foundation, Inc. -- http://fsf.org/
+
+cd "$HOME"
+
+# set mescaline installation location
+mescaline_home="$HOME/.mescaline"
+
+_mescaline () {
+  export PROMPT="$($mescaline_home/mescaline $?)"
+}
+
+# call _mescaline function
+precmd () {
+	_mescaline
+}
+
+# osx specifics
+if [[ "$(uname)" == "Darwin" ]]; then
+  osx=1
+else
+  osx=0
+fi
+
+# force $TERM on rxvt
+if [[ "$COLORTERM" == "rxvt-xpm" ]]; then
+  export TERM="rxvt-unicode-256color"
+fi
+
+# force $TERM on xfce4-terminal
+if [[ "$COLORTERM" == "xfce4-terminal" ]]; then
+  export TERM="xterm-256color"
+fi
+
+# force $TERM on xterm
+if [[ "$TERM" == "xterm" ]]; then
+    export TERM="xterm-256color"
+fi
+
+# for $TERM on screen
+if [[ "$TERM" == "screen" ]]; then
+    export TERM="screen-256color"
+fi
+
+# set $PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH:$HOME/bin
+
+# set standard editor via $EDITOR
+export EDITOR='vim'
+
+# show man pages color
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;33m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+# fix for ssh host completion from ~/.ssh/config (yes, this is ugly, sorry for this)
+[ -f ~/.ssh/config ] && : ${(A)ssh_config_hosts:=${${${${(@M)${(f)"$(<~/.ssh/config)"}:#Host *}#Host }:#*\**}:#*\?*}}
+
+# needed to keep backgrounded jobs running
+setopt NO_HUP
+
+# zsh syntax highlighting
+source "$HOME/.zsh/plugins/zsh-syntax-colours/zsh-syntax-highlighting.zsh"
+
+# grep with color
+alias grep='grep --color=auto'
+
+dircolors_command="dircolors"
+ls_command="ls"
+ls_options="--color=auto --group-directories-first -F"
+
+# disable auto correction (sudo)
+alias sudo='nocorrect sudo'
+
+# disable auto correction (global)
+unsetopt correct{,all} 
+
+# don't select first tab menu entry
+unsetopt menu_complete
+
+# disable flowcontrol
+unsetopt flowcontrol
+
+# enable tab completion menu
+setopt auto_menu
+
+# enable in-word completion
+setopt complete_in_word
+setopt always_to_end
+
+# word characters
+# WORDCHARS='-'
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
+# load complist mod
+zmodload -i zsh/complist
+
+# completion list color definitions
+zstyle ':completion:*' list-colors ''
+
+# enable in-menu keybindings
+bindkey -M menuselect '^o' accept-and-infer-next-history
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+
+# disable named-directories autocompletion
+zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
+cdpath=(.)
+
+# allow extended globbing
+setopt extendedglob
+
+# don't complete first match (wildcard match)
+zstyle '*' single-ignored show
+
+# enable completion system (-i: disable check for insecure
+# files/directories)
+autoload -U compinit && compinit -i
+
+# use expand-or-complete-with-dots
+zle -N expand-or-complete-with-dots
+expand-or-complete-with-dots() {
+    echo -n "\e[36mᕁ\e[0m"
+    zle expand-or-complete
+    zle redisplay
+}
+bindkey "^I" expand-or-complete-with-dots
+bindkey 'tab' expand-or-complete-with-dots
+
+# load "select-word-style"
+autoload -Uz select-word-style
+
+# it's magic!
+select-word-style bash
+
+# enable backward-kill-word-match
+zle -N backward-kill-word-match
+
+# history options 
+export HISTSIZE=2000 
+export HISTFILE="$HOME/.history"
+export SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups
+
+# locales export
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# automatically cd to dir without "cd" needed
+setopt autocd
+
+# this let's us select keymaps (command prompt input mode)
+zle -N zle-keymap-select
+
+# use emacs line editing (command prompt input mode)
+bindkey -e
+
+# git function to combine those 3 
+acp ()
+{
+  git add -A :/ && git commit -m "$1" && git push
+}
+
+# git function which runs the above acp function within
+# any child/nested repositories before committing and
+# pushing the parent repository
+# (not useful very in detached cloned submodule repositories)
+sacp () {
+  git submodule foreach 'git add -A && git commit -m "updating $name from $toplevel" && git push'
+  acp "$1"
+}

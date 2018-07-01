@@ -20,13 +20,6 @@ wig="[wigglytuff]"
 
 msg 'wigglydots installer v0.2 - https://github.com/Igglybuff/wigglydots'
 
-# check to see if user read the README.md
-# and autofix if he/she didn't
-if [ ! -e "mescaline/zshrc" ]; then
-  msg 'someone forgot to clone recursively...'
-  git clone https://github.com/Igglybuff/mescaline.git || { msg 'could not clone mescaline git repo. exiting...'; exit 1; }
-fi
-
 # check for dependencies
 msg 'searching for unmet dependencies...'
 if [ ! -d "/usr/local/lib/python2.7/dist-packages/powerline" ]; then
@@ -41,7 +34,7 @@ if [ -e "$HOME/.mescaline" ]; then
   rm -rf "$HOME/.mescaline"
 fi
 mv "$HOME/.zshrc" "$HOME/.zshrc.pre-mescaline"
-sh ./mescaline/install.sh || msg 'mescaline install failed. continuing anyway.'
+sh ./mescaline-scripts/install.sh || msg 'mescaline install failed. continuing anyway.'
 
 # create .wigglytuff directory
 msg 'creating .wigglytuff directory...'
